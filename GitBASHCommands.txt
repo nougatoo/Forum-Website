@@ -1,0 +1,25 @@
+Git BASH Commands
+
+==Configure Remotes==
+git remote add upstream [url]
+
+=Copy all the files from the site to laptop (DO THIS ONCE)=
+git clone [url]
+
+=Pull latest file versions from the site to laptop=
+git pull
+git pull origin master
+
+
+=Add files=
+git add -A (-A means all the changes, could specify which ones)
+
+=Commit files=
+git commit -m "<Comment about Change>"
+
+=Push files=
+git push origin master
+
+::NOTE::
+Do not mess with each other's scenes & scripts unless explicitly asked
+Changing the same scene/file will create a bad backlash
