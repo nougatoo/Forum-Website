@@ -27,3 +27,15 @@ It will ask for the password, which you will type in and press enter.
 <b>Congratulations, you have connected to the database! Go nuts!*<b>
 
 <em>* I have made it so only I can drop a table, as the permissions to do that allow you to drop the whole database... So if you screw up while building a table, let me know and I will remove it for you.</em>
+
+## Connecting to the Database on Netbeans
+
+Go to Services
+> Right click Databases
+> New Connections
+> Change the Driver to MySQL (Connector / J Driver)
+> Click Next
+> Input information as above
+> Port number should be 3306 by default
+> Next
+> Finish
