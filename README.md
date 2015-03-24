@@ -6,10 +6,24 @@ Please be sure to commit and push any changes you make before leaving for the ni
 
 Also, please use 4 spaces for tabs.
 
-# Ryan Comments
+## Connecting to the Database
 
-Just testing the whole adding and updating!
+I have created a database on my server for us to make use of. This will allow us to all interact with the same data and maintain consistency between DB setups.
 
-Note: We need to organize every features we have and have the table visualized.
-Aka, converting our ER diagram into a table, that would be a good place to get started.
-In the mean time though, I am planning on familiarizing myself with the codes.
+<em><b>To connect, you need to know the following information:</b></em>
+<ul>
+  <li><b>Host:</b> zeeveener.com</li>
+  <li><b>User:</b> collier</li>
+  <li><b>Password:</b> rox</li>
+  <li><b>Database:</b> collier</li>
+</ul>
+
+To connect from the command-line: 
+```
+mysql -h zeeveener.com -u collier -D collier -p
+```
+It will ask for the password, which you will type in and press enter.
+
+<b>Congratulations, you have connected to the database! Go nuts!*<b>
+
+<em>* I have made it so only I can drop a table, as the permissions to do that allow you to drop the whole database... So if you screw up while building a table, let me know and I will remove it for you.</em>
