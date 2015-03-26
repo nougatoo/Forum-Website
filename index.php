@@ -1,7 +1,7 @@
 <html>
     <body>
         <?php
-            print("Hello World");
+            print("Hello World, just testing -Brandon");
         ?>
         This is a test.
         <br><a href="login.php">Try clicking this</a>
