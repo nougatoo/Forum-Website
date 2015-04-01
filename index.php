@@ -31,6 +31,9 @@
                     if ($value['create_forum']==1)
                     {
                         echo 'I am an Administrator! I have Rights to Create Forums!!<br>';
+                        
+                        
+                        
                         /*
                          * TODO: Display "Add Forum" Function.
                          * Also display the Forum with the corresponding Boards underneath
@@ -42,6 +45,14 @@
                          * If a Forum does NOT have ANY VISIBLE BOARD for a user, then the Forum should NOT be displayed
                          * Extra: Delete Forum
                          */
+                        
+                        ?>
+            
+                        <form action = "create_forum.php" method = "post">
+                            <input type="submit" value="Create Forum" />
+                        </form>
+                        
+                        <?php
                     }
                     
                     if ($value['create_board']==1)
@@ -58,6 +69,48 @@
                 * TODO: Display Forums for Regular Users
                 * We may not even need this else statement, because Admins should be able to see the rest of the Forums too.
                 */
+                
+                $query = "SELECT title, id FROM forum";
+                $result = mysqli_query($db, $query);
+                
+                
+                //Shows all the forums and the boards that go with 
+                while($row = $result->fetch_assoc()){
+                    echo "<br>"."<br>";
+                    ?>
+            
+                    <font size="4"><b>
+                        
+                    <?php 
+                    echo $row["title"]. ": ";
+                    ?> 
+                        
+                    </font></b>
+                    
+                    <?php 
+                    
+                    $fid = $row["id"];
+
+                    $query2 = "SELECT title, description,id FROM board WHERE forumid=$fid";
+                    $result2 = mysqli_query($db, $query2);
+                    
+                    while($row2 = $result2->fetch_assoc()) {
+                        
+                        echo "<br>".$row2["title"].": ";
+                        echo $row2["description"]. " ";
+                        $bid = $row2["id"];
+                    ?>
+                    
+                    <form action = "board.php" method = "post">
+                        <input type="submit" name=$bid value="Go Here" />
+                    </form>
+                 
+                    <?php
+                    }
+                   
+                }
+                
+                 
             }
         ?>
            <!-- Need to join the user with rank, and then check for create_forum
