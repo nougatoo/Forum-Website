@@ -28,7 +28,7 @@
     function close()
     {
         //Check if the window is closed
-        if (CONNECTION_ABORTED==1)
+        if (CONNECTION_ABORTED==1 && CONNECTION_STATUS() != 0)
         {
             //Destroy session
             session_unset();
