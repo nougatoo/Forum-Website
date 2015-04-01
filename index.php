@@ -4,7 +4,8 @@
             print("Hello World, just testing -Brandon");
         ?>
         This is a test.
-        <br><a href="login.php">Try clicking this</a>
+        <br><a href="login.php">Login</a>
+        <br><a href="reg_screen.php">Register</a>
         
         <?php
         //mysqli('host', 'user', 'password', 'database');

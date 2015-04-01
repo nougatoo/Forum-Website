@@ -22,19 +22,20 @@
         $email = $_POST['email'];
         $title = $_POST['title'];
         $gender = $_POST['gender'];
+        $rank = 1;
         
         print($username);
         //Only put in one check for the sake of time, will add more after
         if (!empty($username)) {
-            $query = "INSERT INTO `user` (username,signature,email,gender,title,password) VALUES ('$username', '$signature', '$email', '$gender', '$title', '$password')";
+            $query = "INSERT INTO `user` (username,signature,email,gender,title,password,rank) VALUES ('$username', '$signature', '$email', '$gender', '$title', '$password', $rank)";
             $result = mysqli_query($db, $query);
             if($result)
             {
-                print("Successful");
+                header("Location: login.php");
             }
             else
             {
-                print("Not successful");
+                print("<br> Registration was not successful, please go back and try again");
             }
         }
         
@@ -43,7 +44,10 @@
     }
     else
     {
-        print("im not working");
+        print("<br>im not working");
     }
 
 ?>
+<br>
+<br>
+<a href="index.php">Go Back</a>
