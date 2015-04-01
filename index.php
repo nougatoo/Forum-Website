@@ -13,9 +13,32 @@
             <br><a href='reg_screen.php'>Register</a>        
         <?php endif; ?>
         
+
+            <p>==========ROBERT COLLIER FAN FORUM==========</p>
+            
+        <?php
+            if (isset($_SESSION['username']))
+            {
+                $user = $_SESSION['username'];
+                $query = "SELECT create_forum FROM rank JOIN user ON user.rank=rank.id WHERE username='$user'";
+                $result = mysqli_query($db, $query);
+                if ($result)
+                {
+                    echo "I am an Administrator. Allow me to create a new Forum";
+                }
+            }
+        ?>
+           <!-- Need to join the user with rank, and then check for create_forum
+           select create_forum
+            FROM rank
+            INNER JOIN user
+            ON user.rank=rank.id
+            WHERE username='collier';
+           
+           --> 
+           
         <?php
             close();
         ?>
-            <p>==========ROBERT COLLIER FAN FORUM==========</p>
     </body>
 </html>
