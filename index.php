@@ -1,17 +1,17 @@
 <html>
+
     <body>
+
         <?php
             print("Hello World, just testing -Brandon");
-            session_start();
+            require 'functions.php';
         ?>
         This is a test.
-        <br><a href="login.php">Login</a>
-        <br><a href="reg_screen.php">Register</a>
         
         <?php
+            
         //mysqli('host', 'user', 'password', 'database');
-        $db = new mysqli('zeeveener.com', 'collier', 'rox', 'collier');
-        
+        /*$db = new mysqli('zeeveener.com', 'collier', 'rox', 'collier');
         if ($db->connect_errno > 0)
         {
             die('Unable to connect to database [' . $db->connect_error . ']');
@@ -19,7 +19,8 @@
         else
         {
             print('Database Connected');
-        }
+        }*/
+        
         
         if (isset($_SESSION['username']))
         {
@@ -28,15 +29,13 @@
         else
         {
             print('<br>We are not logged in');
+            echo "<br><a href='login.php'>Login</a>";
+            echo "<br><a href='reg_screen.php'>Register</a>";    
         }
         ?>
         
         <?php
-        if (CONNECTION_ABORTED==1)
-        {
-            session_unset();
-            session_destroy();
-        }
+            close();
         ?>
     </body>
 </html>
