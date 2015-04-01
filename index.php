@@ -67,6 +67,11 @@
             ON user.rank=rank.id
             WHERE username='collier';
            
+            UPDATE board
+            SET notopic=(SELECT COUNT(*) FROM topic WHERE id=boardid)
+            WHERE id=1;
+            ^This will update the number of topics inside a board.
+           
            --> 
            
     </body>
