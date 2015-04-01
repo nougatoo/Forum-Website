@@ -1,7 +1,9 @@
+<?php
+    require 'functions.php';
+?>      
 <html>
     <body>
         <?php 
-            require 'functions.php';
             //Storing what the user input
             $username = $_POST['username'];
             $password = $_POST['password'];
