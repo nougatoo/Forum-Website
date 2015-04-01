@@ -1,9 +1,11 @@
+<?php
+    require 'functions.php';
+    initialize();
+?>        
+
 <html>
     <body>
         <?php
-
-        require 'functions.php';
-        //Connecting to DB
 
         if (isset($_POST['username_r']) && isset($_POST['password_r']) && isset($_POST['signature']) && isset($_POST['email']) && isset($_POST['title']) && isset($_POST['gender']))
         {

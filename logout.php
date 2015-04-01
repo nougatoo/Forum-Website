@@ -1,3 +1,8 @@
+<?php
+    require 'functions.php';
+    initialize();
+?>        
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -9,7 +14,6 @@ and open the template in the editor.
     <body>
         <?php
         // put your code here
-        require 'functions.php';
         loguser();
         header("refresh:1; url=index.php");
         ?>
