@@ -26,6 +26,6 @@
             header("refresh:1; url=index.php");
         ?>
     </body>
-    Wait 5 seconds.
+    Wait 1 seconds.
     We will take you back to the index page~
 </html> 
