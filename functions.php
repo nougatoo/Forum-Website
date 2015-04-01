@@ -7,7 +7,7 @@
  */
     
     //mysqli('host', 'user', 'password', 'database');
-     $db = new mysqli('zeeveener.com', 'collier', 'rox', 'collier');
+    $db = new mysqli('zeeveener.com', 'collier', 'rox', 'collier');
     //Check if the database is connected
     if ($db->connect_errno > 0)
     {
@@ -27,8 +27,14 @@
 
     function close()
     {
+        /*
+         * This doesn't fully work.
+         * You can now have more than one tab open, which will use the same session
+         * But closing all the tabs doesn't destroy the session
+         */
+        
         //Check if the window is closed
-        if (CONNECTION_ABORTED==1 && CONNECTION_STATUS() != 0)
+        if (CONNECTION_STATUS()==1 && CONNECTION_STATUS() != 0)
         {
             //Destroy session
             session_unset();
