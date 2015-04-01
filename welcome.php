@@ -36,8 +36,8 @@
             //Maybe have two buttons here that give user option to go back and register or continue as guest
               
         }
-        
-        
+            
+        header("refresh:5; url=index.php");
 
         ?>
         
