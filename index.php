@@ -28,7 +28,11 @@
                     $value = $result->fetch_assoc();
                     if ($value['create_forum']==1)
                     {
-                        echo 'Totally Worked!';
+                        echo 'I am an Administrator! I have Rights!!';
+                    }
+                    else
+                    {
+                        echo 'Lol I anit an admin...';
                     }
                 }
                 else
