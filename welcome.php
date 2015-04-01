@@ -1,7 +1,5 @@
 <html>
     <body>
-
-        Welcome
         <?php 
             require 'functions.php';
             //Storing what the user input
@@ -25,8 +23,9 @@
                 //Maybe have two buttons here that give user option to go back and register or continue as guest
             }
 
-            header("refresh:5; url=index.php");
+            header("refresh:1; url=index.php");
         ?>
     </body>
-    Wait 5 seconds. We will take you back to the index page~
+    Wait 5 seconds.
+    We will take you back to the index page~
 </html> 

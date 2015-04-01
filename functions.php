@@ -36,8 +36,9 @@
         }
     }
     
-    function test()
+    function loguser()
     {
-        echo 'omg I got clicked';
+        session_unset();
+        session_destroy();
     }
 ?>
