@@ -17,7 +17,7 @@
         else
         {
             print('Database Connected');
-        }    
+        }
         ?>
     </body>
 </html>
