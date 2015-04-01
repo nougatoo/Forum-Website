@@ -36,6 +36,10 @@
                          * Also display the Forum with the corresponding Boards underneath
                          * We also need to implement the "Add Board" Function underneath every forum.
                          * Possibly assign the Forum ID to be associated with the Add Board link?
+                         * Display a Forum Based of how many Board is Visible
+                         * If a Forum have at LEAST ONE VISIBLE BOARD for a user, then the Forum should be displayed
+                         * with the visible boards.
+                         * If a Forum does NOT have ANY VISIBLE BOARD for a user, then the Forum should NOT be displayed
                          * Extra: Delete Forum
                          */
                     }
@@ -65,8 +69,5 @@
            
            --> 
            
-        <?php
-            close();
-        ?>
     </body>
 </html>
