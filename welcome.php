@@ -2,7 +2,7 @@
     <body>
 
         Welcome <?php 
-        
+        session_start();
         //Connecting to DB
         $db = new mysqli('zeeveener.com', 'collier', 'rox', 'collier');
         
@@ -44,4 +44,5 @@
         
 
     </body>
+    Wait 5 seconds. We will take you back to the index page~
 </html> 

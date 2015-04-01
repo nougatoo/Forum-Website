@@ -2,6 +2,7 @@
     <body>
         <?php
             print("Hello World, just testing -Brandon");
+            session_start();
         ?>
         This is a test.
         <br><a href="login.php">Login</a>
@@ -18,6 +19,23 @@
         else
         {
             print('Database Connected');
+        }
+        
+        if (isset($_SESSION['username']))
+        {
+            print('<br>We are so set');
+        }
+        else
+        {
+            print('<br>We are not logged in');
+        }
+        ?>
+        
+        <?php
+        if (CONNECTION_ABORTED==1)
+        {
+            session_unset();
+            session_destroy();
         }
         ?>
     </body>
