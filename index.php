@@ -22,9 +22,18 @@
                 $user = $_SESSION['username'];
                 $query = "SELECT create_forum FROM rank JOIN user ON user.rank=rank.id WHERE username='$user'";
                 $result = mysqli_query($db, $query);
-                if ($result)
+                
+                if ($result->num_rows>0)
                 {
-                    echo "I am an Administrator. Allow me to create a new Forum";
+                    $value = $result->fetch_assoc();
+                    if ($value['create_forum']==1)
+                    {
+                        echo 'Totally Worked!';
+                    }
+                }
+                else
+                {
+                    echo "Welp this didnt work";
                 }
             }
         ?>
