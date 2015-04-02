@@ -1,6 +1,7 @@
 <?php
     require 'functions.php';
     initialize();
+    $create_board = false;
 ?>        
 
 <html>
@@ -28,7 +29,6 @@
                 $user = $_SESSION['username'];
                 $query = "SELECT create_forum, create_board FROM rank JOIN user ON user.rank=rank.id WHERE username='$user'";
                 $perm_result = mysqli_query($db, $query);
-                
                 if ($perm_result->num_rows>0)
                 {
                     $value = $perm_result->fetch_assoc();
@@ -62,13 +62,14 @@
                     if ($value['create_board']==1)
                     {
                         echo 'I have permission to create boards!<br>';
-                        
+                        $create_board = true;
                     }
                 }
                 else
                 {
                     echo "Fantastic, you arent an Admin nub, no buttons for you";
                 }
+                echo "<br>$create_board";
                 /*
                 * TODO: Display Forums for Regular Users
                 * We may not even need this else statement, because Admins should be able to see the rest of the Forums too.
@@ -114,6 +115,16 @@
                     ?> 
                         
                     </font></b>
+                    
+                    <?php
+                    if ($create_board == true)
+                    : ?>
+                    <form action = "create_board.php" method = "post">
+                        <input type="submit" name=$row["id"] value="Add Board" />
+                    </form>
+                    <?php
+                    endif;
+                    ?>
                     
                     <?php 
                     
