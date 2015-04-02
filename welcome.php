@@ -1,8 +1,7 @@
 <?php
     require 'functions.php';
     initialize();
-?>        
-   
+?>      
 <html>
     <body>
         <?php 
