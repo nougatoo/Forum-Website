@@ -112,18 +112,18 @@
                         
                     <?php 
                     echo $row["title"]. ": ";
+                    $fid = $row["id"];
                     ?> 
                         
                     </font></b>
                     
                     <?php
-                    if ($create_board == true)
-                    : ?>
-                    <form action = "create_board.php" method = "post">
-                        <input type="submit" name=$row["id"] value="Add Board" />
-                    </form>
-                    <?php
-                    endif;
+                        if ($create_board == true)
+                        {
+                        echo '<form action = "create_board.php" method = "post">
+                                <button type="submit" name="add_board" value="'.$fid.'"> Add Board</button>
+                            </form>';
+                        }                    
                     ?>
                     
                     <?php 
