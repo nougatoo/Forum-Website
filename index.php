@@ -6,14 +6,18 @@
 <html>
     <body>
 
-        <?php if (isset($_SESSION['username'])) : ?>
+        <?php if (isset($_SESSION['username']) && !($_SESSION['username']=='Guest')) : ?>
             We are set set.
             <br><a href='logout.php'>Log Out</a>
-        <?php else : ?>
-            We are not logged in
+        <?php else :     
+        $_SESSION['username'] = 'Guest';
+         ?>
+            Welcome to the Robert Collier Fan Forum.
+            You are a Guest.
             <br><a href='login.php'>Login</a>
-            <br><a href='reg_screen.php'>Register</a>        
-        <?php endif; ?>
+            <br><a href='reg_screen.php'>Register</a>
+        <?php endif;
+        ?>
         
 
             <p>==========ROBERT COLLIER FAN FORUM==========</p>
@@ -63,14 +67,38 @@
                 }
                 else
                 {
-                    echo "Welp this didnt work";
+                    echo "Fantastic, you arent an Admin nub, no buttons for you";
                 }
                 /*
                 * TODO: Display Forums for Regular Users
                 * We may not even need this else statement, because Admins should be able to see the rest of the Forums too.
                 */
                 
-                $query = "SELECT title, id FROM forum";
+                /*
+                 * SELECT title, id
+                 * FROM forum
+                 * WHERE id IN
+                 * (
+                 *  FROM board AS b
+                 *  JOIN board_permission
+                 *  ON b.id=boardid
+                 *  WHERE seeboard=1 AND rankid IN
+                 *  (
+                 *     SELECT rank
+                 *     FROM user
+                 *     WHERE username='hue'
+                 *  )
+                 * );
+                 * ^Get all the forumid associated with the rank you have
+                 * Needto query for rank too.
+                 */
+                
+                $query = "SELECT title, id FROM forum"
+                        . " WHERE id IN (SELECT forumid FROM board AS b"
+                        . " JOIN board_permission"
+                        . " ON b.id=boardid"
+                        . " WHERE seeboard=1"
+                        . " AND rankid IN (SELECT rank FROM user WHERE username='$user'));";
                 $result = mysqli_query($db, $query);
                 
                 
