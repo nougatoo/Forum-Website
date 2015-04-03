@@ -120,7 +120,7 @@
                     <?php
                         if ($create_board == true)
                         {
-                        echo '<form action = "create_board.php" method = "post">
+                        echo '<form action = "create_board_screen.php" method = "post">
                                 <button type="submit" name="add_board" value="'.$fid.'"> Add Board</button>
                             </form>';
                         }                    
