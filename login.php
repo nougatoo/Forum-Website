@@ -1,6 +1,6 @@
 <html>
     <body>
-        Please enter your username as password
+        Please enter your username and password
         <br>
         <br>
         <form action="welcome.php" method="post">

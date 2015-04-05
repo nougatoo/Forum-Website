@@ -67,7 +67,7 @@
                 }
                 else
                 {
-                    echo "Fantastic, you arent an Admin nub, no buttons for you";
+                    echo "Fantastic, you aren't an Admin nub, no buttons for you";
                 }
                 echo "<br>$create_board";
                 /*
@@ -108,14 +108,14 @@
                     echo "<br>"."<br>";
                     ?>
             
-                    <font size="4"><b>
+                    <span style="font-size: medium; "><b>
                         
                     <?php 
                     echo $row["title"]. ": ";
                     $fid = $row["id"];
                     ?> 
                         
-                    </font></b>
+                    </span></b>
                     
                     <?php
                         if ($create_board == true)
