@@ -51,6 +51,7 @@ if (isset($_SESSION['username']))
             ?>
 
             <form action = "create_forum.php" method = "post">
+                <input type="hidden" value="<?php echo $user?>" name="user">
                 <input type="submit" value="Create Forum" />
             </form>
 
