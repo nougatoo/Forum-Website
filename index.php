@@ -8,6 +8,9 @@ $create_board = false;
 <body>
 
 <?php if (isset($_SESSION['username']) && !($_SESSION['username']=='Guest')) : ?>
+    <br><a href='logout.php'>Log Out</a>
+<?php else :
+    $_SESSION['username'] = 'Guest';
     ?>
     Welcome to the Robert Collier Fan Forum.
     You are a Guest.

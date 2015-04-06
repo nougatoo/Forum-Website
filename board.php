@@ -28,6 +28,8 @@ while ($row = $result->fetch_assoc()){
     print($row["description"]);
 }
 ?>
-
+<br>
+<br>
+<a href="index.php">Go Back</a>
 </body>
 </html>
