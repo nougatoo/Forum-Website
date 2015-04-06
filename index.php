@@ -129,10 +129,8 @@ if (isset($_SESSION['username']))
             echo "<br>".$row2["title"].": ";
             echo $row2["description"]. " ";
             $bid = $row2["id"];
-            $bname = $row2["title"];
-
             echo '<form action = "board.php" method = "post">
-                <button type="submit" name="goto_board" value="'.$bname.'"> Go Here</button>
+                <button type="submit" name="goto_board" value="'.$bid.'"> Go Here</button>
             </form>';
 
         }
