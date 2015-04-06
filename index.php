@@ -8,10 +8,6 @@ $create_board = false;
 <body>
 
 <?php if (isset($_SESSION['username']) && !($_SESSION['username']=='Guest')) : ?>
-    We are set set.
-    <br><a href='logout.php'>Log Out</a>
-<?php else :
-    $_SESSION['username'] = 'Guest';
     ?>
     Welcome to the Robert Collier Fan Forum.
     You are a Guest.
@@ -133,13 +129,12 @@ if (isset($_SESSION['username']))
             echo "<br>".$row2["title"].": ";
             echo $row2["description"]. " ";
             $bid = $row2["id"];
-            ?>
+            $bname = $row2["title"];
 
-            <form action = "board.php" method = "post">
-                <input type="submit" name=$bid value="Go Here" />
-            </form>
+            echo '<form action = "board.php" method = "post">
+                <button type="submit" name="goto_board" value="'.$bname.'"> Go Here</button>
+            </form>';
 
-        <?php
         }
     }
 }

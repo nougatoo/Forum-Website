@@ -15,7 +15,7 @@ and open the template in the editor.
         loguser();
         header("refresh:1; url=index.php");
         ?>
-        You have been logged out...
-        Wait 1 second to be redirected.
+        Logging out...
+        Redirecting you to the home page...
     </body>
 </html>

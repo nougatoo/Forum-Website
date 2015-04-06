@@ -16,10 +16,10 @@ $count = mysqli_num_rows($result);
 
 if ($count == 1){
     $_SESSION['username'] = $username;
-    print("<br> Hello, you are a registered user");
+    print("<br> Hello, you are a registered user <br>");
     //
 } else {
-    print("<br> You are not a registered user, or you have entered an incorrect password");
+    print("<br> You are not a registered user, or you have entered an incorrect password <br>");
     //Maybe have two buttons here that give user option to go back and register or continue as guest
 }
 
