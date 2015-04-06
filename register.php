@@ -6,7 +6,7 @@ initialize();
 <body>
 <?php
 
-if (isset($_POST['username_r']) && isset($_POST['password_r']) && isset($_POST['signature']) && isset($_POST['email']) && isset($_POST['title']) && isset($_POST['gender']))
+if (isset($_POST['username_r']) && isset($_POST['password_r']) && isset($_POST['signature']) && isset($_POST['email']) && isset($_POST['title']) && isset($_POST['gender']) && isset($_POST['age']))
 {
     $username = $_POST['username_r'];
     $password = $_POST['password_r'];
@@ -14,6 +14,7 @@ if (isset($_POST['username_r']) && isset($_POST['password_r']) && isset($_POST['
     $email = $_POST['email'];
     $title = $_POST['title'];
     $gender = $_POST['gender'];
+    $age = $_POST['age'];
     $date = date("Y-m-d");
     $rank = 1;
 
