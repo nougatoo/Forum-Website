@@ -13,13 +13,13 @@ Delete Board * [Optional]
 
 ===Board===
 Display Board (?)
-Display Topics
+Display Topics ~
 Add Topics *
 Sticky Topics *
 Delete Topics * [Optional]
 
 ===Topics===
-Display posts
+Display posts ~
 Create posts
 
 ===Profile Page===
