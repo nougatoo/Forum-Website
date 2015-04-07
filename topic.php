@@ -1,7 +1,5 @@
 <?php
-
-require 'functions.php';
-initialize();
+    require_once 'functions.php';
 
 
 $_SESSION['topicid'] = $_POST['tid'];

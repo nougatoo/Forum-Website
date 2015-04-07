@@ -5,26 +5,24 @@
  * we can just keep adding those codes in here, aka the default stuff.
  * @author Ryan
  */
-    
-    //mysqli('host', 'user', 'password', 'database');
-    static $db;
-    //Start a session
     session_start();
+
+    static $db;
+    date_default_timezone_set("UTC");
+    if($db === NULL){
+        initialize();
+    }
 
     function initialize()
     {
         global $db;
         $db = new mysqli('zeeveener.com', 'collier', 'rox', 'collier');
 
-                //Check if the database is connected
+        //Check if the database is connected
         if ($db->connect_errno > 0)
         {
             //Kill, cause we can't connect
             die('Unable to connect to database [' . $db->connect_error . ']');
-        }
-        else
-        {
-            print('<br>Database Connected<br>');
         }
         
     }

@@ -1,4 +1,5 @@
 <?php
+    require_once 'functions.php';
 
     $username = $_POST['user'];
     echo "Logged in as: ".$username;

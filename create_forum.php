@@ -1,6 +1,5 @@
 <?php
-    require 'functions.php';
-    initialize();
+    require_once 'functions.php';
 
     $title = $_POST['title'];
     $username = $_POST['user'];
