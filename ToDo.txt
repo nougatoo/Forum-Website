@@ -1,0 +1,38 @@
+* For Administrators
+~ Done
+[Optional] = Optional to do at this point, but we're mainly concerned with adding and displaying. Do these after main functionalities are up.
+
+
+===Forum===
+Display Forums ~
+Display Boards ~
+Add Forum * ~
+Add Board * ~
+Delete Forum * [Optional]
+Delete Board * [Optional]
+
+===Board===
+Display Board (?)
+Display Topics
+Add Topics *
+Sticky Topics *
+Delete Topics * [Optional]
+
+===Topics===
+Display posts
+Create posts
+
+===Profile Page===
+Display user
+Display status
+Display number of posts
+Display biography
+
+===Private Message===
+Message other person
+Display subject
+Display content
+Date created
+Sent by
+Received by
+In reply to
