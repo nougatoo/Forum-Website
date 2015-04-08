@@ -21,7 +21,13 @@
                     <option name="gender" value="other">Other</option>
                 </select><br>
             Age: <input type="number" name="age" min="13" required><br>
-            Title: <input type="text" name="title"><br>
+            Title: <select name="title">
+                <option disabled="disabled" name="title" value="">Choose one:</option>
+                <option name="title" value="Mrs.">Female</option>
+                <option name="title" value="Ms.">Female</option>
+                <option name="title" value="Mr.">Male</option>
+                <option name="title" value="N/A">Other</option>
+            </select><br>
             <input type="submit" value="Register">
         </form>
     </body>

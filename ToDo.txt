@@ -14,7 +14,7 @@ Delete Board * [Optional]
 ===Board===
 Display Board (?)
 Display Topics ~
-Add Topics *
+Add Topics
 Sticky Topics *
 Delete Topics * [Optional]
 
@@ -23,10 +23,11 @@ Display posts ~
 Create posts
 
 ===Profile Page===
-Display user
+Display user info
 Display status
 Display number of posts
 Display biography
+Can edit profile page
 
 ===Private Message===
 Message other person

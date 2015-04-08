@@ -21,7 +21,7 @@ echo "<br>"."<br>"."Stickied Topics"."<br>"."<br>";
 
 
 //This will show all the sticked topics first
-while($row = $result->fetch_assoc()){
+git 
     
     if($row['sticky'] == 1 && $row['hidden'] != 1)
     {
