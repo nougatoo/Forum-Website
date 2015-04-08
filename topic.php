@@ -2,25 +2,41 @@
     require_once 'functions.php';
 
 
-$_SESSION['topicid'] = $_POST['tid'];
-$tid = $_SESSION['topicid'];
+//$_SESSION['topicid'] = $_POST['tid'];
+//$tid = $_SESSION['topicid'];
+$tid = $_POST['tid'];
+$user = $_POST['user'];
+
+//echo "Topic id: ".$_SESSION['topicid'];
 
 
-echo "Topic id: ".$_SESSION['topicid'];
 
-//This shows the OP
-$query = "SELECT title FROM topic WHERE id=$tid";
+//Gets the current number of views and increases by 1
+$query = "SELECT views FROM topic WHERE id='$tid'";
+$result = mysqli_query($db, $query);
+$row = $result->fetch_assoc();
+$num_views = $row['views'];
+
+$num_views = $num_views+1;
+
+$query = "UPDATE `topic` SET views='$num_views' WHERE id='$tid'";
+$result = mysqli_query($db, $query); 
+
+echo "Topic id: ".$tid;
+
+
+//This shows the OP and how many views this topic has
+$query = "SELECT title,views FROM topic WHERE id=$tid";
 $result = mysqli_query($db, $query);
 
 $row = $result->fetch_assoc();
 echo "<br>"."Topic Title: ".$row['title']."<br>"."<br>";
-
+echo "<br>"."Number of views: ".$row['views']."<br>"."<br>";
 
 
 //Going to get all the topics that belong to this board
 $query = "SELECT id, datecreated, datereply, content, postid, username, topicid FROM post WHERE topicid=$tid";
 $result = mysqli_query($db, $query);
-
 
 echo "<br>"."-------------------------------------------------------------";
 
@@ -29,7 +45,8 @@ while($row = $result->fetch_assoc()){
     
     echo "<br>";
     echo $row['content']."<br>"."<br>";
-    echo "Posted by: ".$row['username']." on ".$row['datecreated'];
+    echo "Posted by: ".$row['username']." on ".$row['datecreated']."<br>";
+    echo "Post Number: ".$row['id'];
     
     if($row['postid'] > 0)
     {
@@ -40,17 +57,47 @@ while($row = $result->fetch_assoc()){
         $row2 = $result2->fetch_assoc();
         
         
-        echo "<br>"."In reply to: ".$row2['content'];
+        echo "<br>"."In reply to: ".'"'.$row2['content'].'"';
 
     }
     echo "<br>"."-------------------------------------------------------------";
     
-    
-    /**
-     * TODO: Need to add a "Post reply" button and text box that lets users reply
-     * and need to update number of replies when someone posts and number of 
-     * views everytime someone views a topic
-     *
-     */
- 
 }
+
+if($user != "Guest"){
+?>
+
+
+<html>
+    <body>
+        <br>
+        <br>
+        <form action="post.php" method="post">
+            Post number you're replying to (leave blank if none): <input type="text" name="reply_to"><br>
+            <input type="hidden" value="<?php echo $tid ?>" name="tid">
+            <input type="hidden" value="<?php echo $user ?>" name="user">
+            <textarea name="post_content" rows="10" cols="50" maxlength="500"></textarea> <br>
+        <input type="submit" value="Reply">
+        
+        <br>
+        <br>
+        <br>
+        
+        
+        <?php
+        /**
+         * Need to put a button here that lets the user go back to the board page
+         * without breaking it, because the board needs things to be posted to work
+         * 
+         * Will up date later, just didn't have time -Brandon
+         */
+        ?>
+    </body>
+</html>
+
+
+<?php
+
+}
+
+?>

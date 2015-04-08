@@ -139,7 +139,9 @@
                 echo "<br>".$row2["title"].": ";
                 echo $row2["description"]. " ";
                 $bid = $row2["id"];
+                
                 echo '<form action = "board.php" method = "post">
+                         <input type="hidden" value="'.$user.'" name="user">
                     <button type="submit" name="goto_board" value="'.$bid.'"> Go Here</button>
                 </form>';
             }

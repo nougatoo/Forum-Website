@@ -11,6 +11,7 @@ $_SESSION['bid'] = $_POST['goto_board'];
 print("This Board's ID# is: ");
 print($_SESSION['bid']);
 $bid = $_SESSION['bid'];
+$username = $_POST['user'];
 
 //Going to get all the topics that belong to this board
 $query = "SELECT id, title, noreply, datecreated, views, sticky, hidden, boardid, username FROM topic WHERE boardid=$bid";
@@ -32,6 +33,7 @@ while($row = $result->fetch_assoc()){
 
         <form action = "topic.php" method = "post">
             <input type="hidden" value="<?php echo $row['id']?>" name="tid">
+            <input type="hidden" value="<?php echo $username ?>" name="user">
             <input type="submit" value="See Topic" />
         </form>
 
@@ -55,6 +57,7 @@ while($row = $result->fetch_assoc()){
 
         <form action = "topic.php" method = "post">
             <input type="hidden" value="<?php echo $row['id']?>" name="tid">
+            <input type="hidden" value="<?php echo $username ?>" name="user">
             <input type="submit" value="See Topic" />
         </form>
 
