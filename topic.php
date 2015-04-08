@@ -1,3 +1,7 @@
+<html>
+    <body>
+
+
 <?php
     require_once 'functions.php';
 
@@ -34,6 +38,22 @@ echo "<br>"."Topic Title: ".$row['title']."<br>"."<br>";
 echo "<br>"."Number of views: ".$row['views']."<br>"."<br>";
 
 
+//Gets the boardid that this topic belongs to so we can go back
+$queryBack = "SELECT boardid FROM topic WHERE id='$tid'";
+$resultBack = mysqli_query($db, $queryBack);
+$board_id = $resultBack->fetch_assoc(); 
+
+?>
+
+<form action = "board.php" method = "post">
+    <input type="hidden" value="<?php echo $board_id['boardid'] ?>" name="goto_board">
+    <input type="hidden" value="<?php echo $user ?>" name="user">
+    <input type="submit" value="Go Back" />
+</form>
+
+<?php
+
+
 //Going to get all the topics that belong to this board
 $query = "SELECT id, datecreated, datereply, content, postid, username, topicid FROM post WHERE topicid=$tid";
 $result = mysqli_query($db, $query);
@@ -68,8 +88,6 @@ if($user != "Guest"){
 ?>
 
 
-<html>
-    <body>
         <br>
         <br>
         <form action="post.php" method="post">
