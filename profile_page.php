@@ -8,7 +8,7 @@ $username = $_SESSION['username'];
 print($username);
 print("'s Profile Page");
 
-$query = "SELECT * FROM user WHERE username=$username";
+$query = "SELECT rank, signature, email FROM user WHERE username = '$username'";
 $result = mysqli_query($db, $query);
 while($row = $result->fetch_assoc()) {
     $rank = $row['rank'];
@@ -39,7 +39,7 @@ while($row = $result->fetch_assoc()) {
     }
     ?>
     <br> Rank: <p><span style="color: <?php echo $rankColour?>; "><?php echo $rankMsg?></span></p>
-    <br> Signature: <?php echo $signature?>
+    Signature: <?php echo $row['signature']?>
 <?php
 }
 ?>
