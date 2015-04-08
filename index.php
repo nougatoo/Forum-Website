@@ -14,6 +14,7 @@
 <?php 
     if (isset($_SESSION['username']) && ($_SESSION["username"] !== "Guest")) {
 ?>
+        <br><a href='profile_page.php'>My Profile</a>
         <br><a href='logout.php'>Log Out</a>
 <?php 
     } else {
@@ -23,6 +24,8 @@
         You are a Guest.
         <br><a href='login.php'>Login</a>
         <br><a href='reg_screen.php'>Register</a>
+        <!-- Not sure if guests need a profile page; using for testing-->
+        <br><a href='profile_page.php'>My Profile</a>
 <?php 
     } 
 ?>
