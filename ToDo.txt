@@ -23,10 +23,10 @@ Display posts ~
 Create posts
 
 ===Profile Page===
-Display user info
+Display user info ~
 Display status
 Display number of posts
-Display biography
+Display biography ~
 Can edit profile page
 
 ===Private Message===
