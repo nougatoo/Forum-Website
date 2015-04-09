@@ -12,15 +12,15 @@ Delete Forum * [Optional]
 Delete Board * [Optional]
 
 ===Board===
-Display Board (?)
+Display Board ~
 Display Topics ~
-Add Topics
-Sticky Topics *
+Add Topics ~
+Sticky Topics ~
 Delete Topics * [Optional]
 
 ===Topics===
 Display posts ~
-Create posts
+Create posts ~
 
 ===Profile Page===
 Display user info ~
