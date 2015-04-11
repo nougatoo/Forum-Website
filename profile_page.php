@@ -3,10 +3,22 @@ require_once 'functions.php';
 ?>
 <html>
 <body>
+    
+    
 <?php
+
+
+
+
+/** 
+ * Should add an if statement here to make sure they aren't a guest or banned
+ * so that we don't show anything for guests
+ */
 $username = $_SESSION['username'];
 print($username);
 print("'s Profile Page");
+echo "<br><a href='inbox.php'>Inbox</a>";
+
 
 $query = "SELECT * FROM user WHERE username = '$username'";
 $result = mysqli_query($db, $query);
