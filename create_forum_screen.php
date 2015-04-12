@@ -1,5 +1,5 @@
 <?php
-    require_once 'functions.php';
+    require_once 'navbar.php';
 
     $username = $_POST['user'];
     echo "Logged in as: ".$username;
