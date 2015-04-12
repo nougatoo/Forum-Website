@@ -14,13 +14,7 @@
             if( isset($_POST['reply_id']))
             {
                 $reply_id = $_POST['reply_id'];
-                
-                /** Later i want to add code that shows the message that person 
-                 *  is replying to, so they don't have to go back and look 
-                 *  what it said. Should be easy, just another query using 
-                 *  the "in_reply_to" as the message id and get content. 
-                 */
-               
+                               
                 //Query to insert message into database
                 $query = "INSERT INTO `privatemessage` (subject, content, sentbyuser, receivedbyuser, inreplytopmid, datecreated)"
                         . " VALUES ('$subject', '$pm_content', '$username', '$send_to', '$reply_id', '$date')";
@@ -35,6 +29,7 @@
                 }
                 else
                 {
+                    
                     echo "We could not successfully send your reply, please try again"."<br>";
                     echo "Redirecting you back to inbox";
                     header("refresh:2; url=inbox.php");

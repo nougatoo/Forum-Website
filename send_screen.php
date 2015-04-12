@@ -12,6 +12,15 @@
                 
                 $reply_id = $_POST['reply_id'];
                 
+                //Showing the message that the user is replying to
+                $query = "SELECT content, id FROM privatemessage WHERE id='$reply_id'";
+                $result = mysqli_query($db, $query);
+                
+                $row = $result->fetch_assoc();
+                
+                echo "You are replying to the message: ".'"'.$row['content'].'"';
+                echo "<br>"."<br>";
+                
                 /**We want to get the user name from the post id so that
                  * the user doesn't have to type it in 
                  */
@@ -28,7 +37,7 @@
         <form action="send.php" method="post">
             Subject: <input type="text" name="subject">
             <br>
-            <input type="text" name="pm_content">
+            <textarea name="pm_content" rows="10" cols="50" maxlength="500"></textarea>
             <input type="hidden" value="<?php echo $reply_id ?>" name="reply_id">
             <input type="hidden" value="<?php echo $reply_user ?>" name="send_to">
             <br>

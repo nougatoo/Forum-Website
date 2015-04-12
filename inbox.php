@@ -1,6 +1,8 @@
 <html>
     <body>
-
+        
+        <a href="profile_page.php">Go Back to Profile Page</a>
+        <br>
         <?php
             require_once 'functions.php';
             
@@ -28,6 +30,8 @@
             }
             
         ?>
+        
+        
 
     </body>
     
