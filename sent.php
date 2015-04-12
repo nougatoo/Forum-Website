@@ -1,8 +1,10 @@
+<?php
+    require_once "functions.php";
+?>
+
 <html>
     <body>
-        <?php
-            require_once 'functions.php';
-            
+        <?php            
             $username = $_SESSION['username'];
             
             //Go back to inbox (Doesn't require any posting)

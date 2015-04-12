@@ -1,11 +1,13 @@
+<?php 
+    require_once "functions.php";
+?>
+
 <html>
     <body>
         
         <a href="profile_page.php">Go Back to Profile Page</a>
         <br>
         <?php
-            require_once 'functions.php';
-            
             $username = $_SESSION['username'];
             
             /**
@@ -23,8 +25,8 @@
             else
             {
                 echo "<br>";
-                echo "<a href='sent.php'>Messages You Sent</a>"."<br>"."<br>";
-                echo "<a href='received.php'>Messages You Received</a>"."<br>"."<br>";
+                echo "<a href='sent.php'>Messages You've Sent</a>"."<br>"."<br>";
+                echo "<a href='received.php'>Messages You've Received</a>"."<br>"."<br>";
                 echo "<a href='send_screen.php'>Send a New Message</a>"."<br>"."<br>";
                 
             }

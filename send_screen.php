@@ -1,12 +1,14 @@
+<?php
+    require_once 'functions.php';
+?>
+
 <html>
     <body>
         <a href="inbox.php">Go Back to Inbox</a>
         <br>
         <br>
         
-        <?php 
-            require_once 'functions.php';
-           
+        <?php            
             if(isset($_POST['reply_id']))
             {
                 

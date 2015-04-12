@@ -1,8 +1,10 @@
+<?php
+    require_once 'functions.php';
+?>
+
 <html>
     <body>
-        <?php
-            require_once 'functions.php';
-            
+        <?php            
             //Buncha stuff we need
             $reply_id = $_POST['reply_to'];
             $post_content = $_POST['post_content'];

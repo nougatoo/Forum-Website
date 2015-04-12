@@ -1,9 +1,10 @@
+<?php
+    require_once 'functions.php';
+?>
+
 <html>
     <body>
         <?php
-
-        require_once 'functions.php';
-
         $username = $_POST['user'];        
         $bid = $_POST['bid'];
         $date = $_POST['date'];

@@ -1,10 +1,12 @@
+<?php
+    require_once "functions.php";
+?>
+
 <html>
     <body>
 
 
 <?php
-    require_once 'functions.php';
-
 
 //$_SESSION['topicid'] = $_POST['tid'];
 //$tid = $_SESSION['topicid'];
