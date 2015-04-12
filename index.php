@@ -1,5 +1,5 @@
 <?php
-    require_once 'functions.php';
+    require_once 'navbar.php';
     $create_board = false;
     
     if(isset($_SESSION["reg_success"]) && $_SESSION["reg_success"]){
@@ -10,26 +10,6 @@
 
 <html>
     <body>
-
-<?php 
-    if (isset($_SESSION['username']) && ($_SESSION["username"] !== "Guest")) {
-?>
-        <br><a href='profile_page.php'>My Profile</a>
-        <br><a href='logout.php'>Log Out</a>
-<?php 
-    } else {
-        $_SESSION['username'] = "Guest";
-?>
-        Welcome to the Robert Collier Fan Forum.
-        You are a Guest.
-        <br><a href='login.php'>Login</a>
-        <br><a href='reg_screen.php'>Register</a>
-        <!-- Not sure if guests need a profile page; using for testing-->
-        <br><a href='profile_page.php'>My Profile</a>
-<?php 
-    } 
-?>
-
         <p>==========ROBERT COLLIER FAN FORUM==========</p>
 
 <?php
@@ -121,7 +101,7 @@
             $fid = $row["id"];
 ?>
 
-                        </span></b>
+                        </span><br>
 
 <?php
             if ($create_board == true){

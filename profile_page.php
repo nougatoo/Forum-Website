@@ -1,12 +1,24 @@
 <?php
-require_once 'functions.php';
+    require_once 'navbar.php';
 ?>
 <html>
 <body>
+    
+    
 <?php
+
+
+
+
+/** 
+ * Should add an if statement here to make sure they aren't a guest or banned
+ * so that we don't show anything for guests
+ */
 $username = $_SESSION['username'];
 print($username);
 print("'s Profile Page");
+echo "<br><a href='inbox.php'>Inbox</a>";
+
 
 $query = "SELECT * FROM user WHERE username = '$username'";
 $result = mysqli_query($db, $query);
@@ -16,6 +28,12 @@ while($row = $result->fetch_assoc()) {
     $email = $row['email'];
     $rankColour = "black";
     $rankMsg = "Default Message";
+    
+    //Query to get the number of posts by user
+    $query2 = "SELECT count(id), username FROM post WHERE username = '$username'";
+    $result2 = mysqli_query($db, $query2);
+    $row2 = $result2->fetch_assoc();
+    
     switch ($rank) {
         case 0:
             $rankMsg = "You are an Administrator";
@@ -43,6 +61,7 @@ while($row = $result->fetch_assoc()) {
     <br> Email: <?php echo $row['email']?>
     <br> Gender: <?php echo $row['gender']?>
     <br> Date Joined: <?php echo $row['datejoined']?>
+    <br> Number of Posts: <?php echo $row2['count(id)']?>
 <?php
 }
 ?>

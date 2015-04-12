@@ -1,3 +1,7 @@
+<?php 
+    require_once 'navbar.php';
+?>
+
 <html>  
     <body>
         
@@ -12,7 +16,7 @@
         
         <form action="create_topic.php" method="post">
             Title: <input type="text" name="topic_title">
-            <input type="hidden" value ="<?php echo $bid ?>" name="bid"> 
+            <input type="hidden" value ="<?php echo $bid ?>" name="bid">
             <input type="hidden" value ="<?php echo $date ?>" name="date">     
             <input type="hidden" value ="<?php echo $username ?>" name="user">
                           

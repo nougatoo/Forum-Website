@@ -1,5 +1,5 @@
 <?php
-    require_once 'functions.php';
+    require_once 'navbar.php';
 
     $title = $_POST['title'];
     $username = $_POST['user'];
