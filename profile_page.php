@@ -28,6 +28,12 @@ while($row = $result->fetch_assoc()) {
     $email = $row['email'];
     $rankColour = "black";
     $rankMsg = "Default Message";
+    
+    //Query to get the number of posts by user
+    $query2 = "SELECT count(id), username FROM post WHERE username = '$username'";
+    $result2 = mysqli_query($db, $query2);
+    $row2 = $result2->fetch_assoc();
+    
     switch ($rank) {
         case 0:
             $rankMsg = "You are an Administrator";
@@ -55,6 +61,7 @@ while($row = $result->fetch_assoc()) {
     <br> Email: <?php echo $row['email']?>
     <br> Gender: <?php echo $row['gender']?>
     <br> Date Joined: <?php echo $row['datejoined']?>
+    <br> Number of Posts: <?php echo $row2['count(id)']?>
 <?php
 }
 ?>

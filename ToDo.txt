@@ -25,7 +25,7 @@ Create posts ~
 ===Profile Page===
 Display user info ~
 Display status
-Display number of posts
+Display number of posts ~
 Display biography ~
 Can edit profile page
 
