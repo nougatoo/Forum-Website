@@ -65,28 +65,35 @@ while($row = $result->fetch_assoc()) {
         <br> Number of Posts: <?php echo $row2['count(id)']?>
     <?php } ?>
 <?php
-}
-if(!$isGuestBannedFlag) { ?>
-    <form>
-        <label>Biography:</label> <br>
-        <textarea name="biography" id="bio" rows="10" cols="50" maxlength="500" placeholder="My Bio" readonly></textarea> <br>
-        <input name="Edit" type="button" id="edit" value="Edit" onclick="edit_text()">
-    </form>
-    <!-- Function used to toggle the readonly attribute of the textblock -->
-    <script>
-        function edit_text(){
-            if(document.getElementById("bio").readOnly == true){
-                document.getElementById("bio").readOnly = false;
-                document.getElementById("edit").value = "Save";
-            } else {
-                document.getElementById("bio").readOnly = true;
-                document.getElementById("edit").value = "Edit";
-                <!-- update biography entry in DB -->
-                //console.log(document.getElementById("bio").value);
-            }
+}?>
+<form>
+    <label>Biography:</label> <br>
+    <!-- Perhaps use some CSS to get it to look like a text area? -->
+    <input type="text" name="biography" id="bio" maxlength="10000" placeholder="My Bio" readonly> <br>
+    <input name="Edit" type="button" id="edit" value="Edit" onclick="edit_text()">
+</form>
+
+
+
+<!-- Function used to toggle the readonly attribute of the textblock -->
+<script>
+    function edit_text(){
+        if(document.getElementById("bio").readOnly == true){
+            document.getElementById("bio").readOnly = false;
+            document.getElementById("edit").value = "Save";
+        } else {
+            document.getElementById("bio").readOnly = true;
+            document.getElementById("edit").value = "Edit";
+            <!-- Can't figure out how to update biography entry in DB -->
+            var bioContent = document.getElementById("bio").value.toString();
+            <!-- Can't get script var to string for php -->
+            <?php
+            $query = "UPDATE `profile_page` SET biography='biocontent' WHERE user='$username'";
+            $result = mysqli_query($db, $query); ?>
         }
-    </script>
-<?php } ?>
+    }
+</script>
+
 <!-- Go back function if we want the edit profile link on every page-->
 <br> <button onclick="goBack()">Exit</button>
 <script>
