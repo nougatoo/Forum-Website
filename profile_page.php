@@ -31,7 +31,19 @@ while($row = $result->fetch_assoc()) {
     $query2 = "SELECT count(id), username FROM post WHERE username = '$username'";
     $result2 = mysqli_query($db, $query2);
     $row2 = $result2->fetch_assoc();
-
+//Query to get the biography and status of the user
+    $query3 = "SELECT status,biography FROM profile_page WHERE user = '$username'";
+    $result3 = mysqli_query($db, $query2);
+    $row3 = $result2->fetch_assoc();
+    $status = $row3['status'];
+    // Assuming 1 is online and 0 is offline
+    if($status){ ?>
+        <br> Status: <span style="color: green">Online</span>
+        <?php
+    } else { ?>
+        <br> Status: <span style="color: red;">Offline</span>
+        <?php
+    }
     switch ($rank) {
         case 0:
             $rankMsg = "You are an Administrator";
@@ -66,44 +78,18 @@ while($row = $result->fetch_assoc()) {
     <?php } ?>
 <?php
 }?>
-<form>
-    <label>Biography:</label> <br>
+<form action="profile_page.php" method="post">
+    Biography: <br>
     <!-- Perhaps use some CSS to get it to look like a text area? -->
-    <input type="text" name="biography" id="bio" maxlength="10000" placeholder="My Bio" readonly> <br>
-    <input name="Edit" type="button" id="edit" value="Edit" onclick="edit_text()">
+    <input type="text" name="biography" maxlength="10000" placeholder="My Bio" value="<?php echo $row3['biography']?>"> <br>
+    <input name="editbio" type="submit" value="Save">
 </form> <br>
 
 <?php
-ob_start();
-echo '<script> get_bioContent(); </script>';
-$biocontent = ob_get_contents();
-ob_end_clean();
-$query = "UPDATE `profile_page` SET biography='$biocontent' WHERE user='$username'";
-$result = mysqli_query($db, $query); ?>
+$biocontent = $_POST['biography'];
 
-<br> Result: <?php echo $biocontent?>
-
-
-<!-- Function used to toggle the readonly attribute of the textblock -->
-<script type="text/javascript">
-    var bioContent;
-
-    function get_bioContent(){
-        return bioContent;
-    }
-
-    function edit_text(){
-        if(document.getElementById("bio").readOnly == true){
-            document.getElementById("bio").readOnly = false;
-            document.getElementById("edit").value = "Save";
-        } else {
-            document.getElementById("bio").readOnly = true;
-            document.getElementById("edit").value = "Edit";
-            <!-- Can't figure out how to update biography entry in DB -->
-            bioContent = document.getElementById("bio").value.toString();
-        }
-    }
-</script>
+$query4 = "UPDATE `profile_page` SET biography='$biocontent' WHERE user='$username'";
+$result4 = mysqli_query($db, $query); ?>
 
 <!-- Go back function if we want the edit profile link on every page-->
 <br> <button onclick="goBack()">Exit</button>
