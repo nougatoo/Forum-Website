@@ -71,12 +71,27 @@ while($row = $result->fetch_assoc()) {
     <!-- Perhaps use some CSS to get it to look like a text area? -->
     <input type="text" name="biography" id="bio" maxlength="10000" placeholder="My Bio" readonly> <br>
     <input name="Edit" type="button" id="edit" value="Edit" onclick="edit_text()">
-</form>
+</form> <br>
 
+<?php
+ob_start();
+echo '<script> get_bioContent(); </script>';
+$biocontent = ob_get_contents();
+ob_end_clean();
+$query = "UPDATE `profile_page` SET biography='$biocontent' WHERE user='$username'";
+$result = mysqli_query($db, $query); ?>
+
+<br> Result: <?php echo $biocontent?>
 
 
 <!-- Function used to toggle the readonly attribute of the textblock -->
-<script>
+<script type="text/javascript">
+    var bioContent;
+
+    function get_bioContent(){
+        return bioContent;
+    }
+
     function edit_text(){
         if(document.getElementById("bio").readOnly == true){
             document.getElementById("bio").readOnly = false;
@@ -85,11 +100,7 @@ while($row = $result->fetch_assoc()) {
             document.getElementById("bio").readOnly = true;
             document.getElementById("edit").value = "Edit";
             <!-- Can't figure out how to update biography entry in DB -->
-            var bioContent = document.getElementById("bio").value.toString();
-            <!-- Can't get script var to string for php -->
-            <?php
-            $query = "UPDATE `profile_page` SET biography='biocontent' WHERE user='$username'";
-            $result = mysqli_query($db, $query); ?>
+            bioContent = document.getElementById("bio").value.toString();
         }
     }
 </script>
