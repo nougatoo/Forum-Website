@@ -17,6 +17,9 @@
             $query = "INSERT INTO `user` (username,signature,email,gender,title,password,datejoined,rank) "
                     . "VALUES ('$username', '$signature', '$email', '$gender', '$title', '$password', '$date', $rank)";
             $result = mysqli_query($db, $query);
+            $query2 = "INSERT INTO `profile_page` (user,status,num_posts,biography) "
+                . "VALUES ('$username', 0, 0, 'My Bio')";
+            $result2 = mysqli_query($db, $query2);
             if($result) {
                 $_SESSION["reg_success"] = true;
                 $_SESSION["username"] = $username;
