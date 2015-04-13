@@ -1,14 +1,19 @@
 <?php
     require_once 'navbar.php';
     $create_board = false;
-    
-    if(isset($_SESSION["reg_success"]) && $_SESSION["reg_success"]){
-        print("Registration Successful!");
-        unset($_SESSION["reg_success"]);
+
+    if(!isset($_SESSION["username"])){
+        $_SESSION["username"] = "Guest";
     }
 ?>
 
 <html>
+    <style>
+        body{
+        }
+
+    </style>
+
     <body>
         <p>==========ROBERT COLLIER FAN FORUM==========</p>
 
