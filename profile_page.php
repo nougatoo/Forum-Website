@@ -2,6 +2,16 @@
 require_once 'navbar.php';
 ?>
 <html>
+<!-- can't figure out how to make it behave like a textarea-->
+<style type="text/css">
+    #bio {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 25%;
+        height: 15%;
+    }
+</style>
 <body>
 
 
@@ -13,10 +23,6 @@ require_once 'navbar.php';
  */
 $isGuestBannedFlag = False;
 $username = $_SESSION['username'];
-print($username);
-print("'s Profile Page");
-echo "<br><a href='inbox.php'>Inbox</a>";
-
 
 $query = "SELECT * FROM user WHERE username = '$username'";
 $result = mysqli_query($db, $query);
@@ -36,14 +42,7 @@ while($row = $result->fetch_assoc()) {
     $result3 = mysqli_query($db, $query3);
     $row3 = $result3->fetch_assoc();
     $status = $row3['status'];
-    // Assuming 1 is online and 0 is offline
-    if($status){ ?>
-        <br> Status: <span style="color: green">Online</span>
-    <?php
-    } else { ?>
-        <br> Status: <span style="color: red;">Offline</span>
-    <?php
-    }
+
     switch ($rank) {
         case 0:
             $rankMsg = "You are an Administrator";
@@ -66,9 +65,19 @@ while($row = $result->fetch_assoc()) {
         default:
             echo "Error: Unknown Rank";
     }
-    ?>
-    <br> Rank: <span style="color: <?php echo $rankColour?>; "><?php echo $rankMsg?></span>
-    <?php if(!$isGuestBannedFlag) { ?>
+    if(!$isGuestBannedFlag) {
+        print($username);
+        print("'s Profile Page");
+        // Assuming 1 is online and 0 is offline
+        if($status){ ?>
+            <br> Status: <span style="color: green">Online</span>
+        <?php
+        } else { ?>
+            <br> Status: <span style="color: red;">Offline</span>
+        <?php
+        }
+        echo "<br><a href='inbox.php'>Inbox</a>";?>
+        <br> Rank: <span style="color: <?php echo $rankColour?>; "><?php echo $rankMsg?></span>
         <br> Title: <?php echo $row['title']?>
         <br> Signature: <?php echo $row['signature']?>
         <br> Email: <?php echo $row['email']?>
@@ -78,7 +87,7 @@ while($row = $result->fetch_assoc()) {
         <form action="profile_page.php" method="post">
             Biography: <br>
             <!-- Perhaps use some CSS to get it to look like a text area? -->
-            <input type="text" name="biography" maxlength="10000" placeholder="My Bio" value="<?php echo $row3['biography']?>"> <br>
+            <input type="text" name="biography" id="bio" maxlength="10000" placeholder="My Bio" value="<?php echo $row3['biography']?>"> <br>
             <input name="editbio" type="submit" value="Save">
         </form> <br>
         <?php
@@ -91,6 +100,7 @@ while($row = $result->fetch_assoc()) {
 
 <!-- Go back function if we want the edit profile link on every page-->
 <br> <button onclick="goBack()">Exit</button>
+<!-- seems to require that information be resent. Use get indtead of post? -->
 <script>
     function goBack(){
         window.history.back();
