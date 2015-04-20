@@ -1,0 +1,20 @@
+body{
+    background-image: url("background.png");
+}
+
+div.navbar ul {
+    list-style-type: none;
+    margin: 0 10px;
+    padding: 0;
+    overflow: hidden;
+}
+
+div.navbar li {
+    float: right;
+    padding: 2px;
+}
+
+div.navbar {
+    padding-bottom: 10px;
+    width: 100%;
+}

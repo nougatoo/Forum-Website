@@ -13,11 +13,11 @@
          * To change this template file, choose Tools | Templates
          * and open the template in the editor.
          */
-            $_SESSION['fid'] = $_POST['add_board'];
+            $_SESSION['fid'] = $_GET['add_board'];
             echo $_SESSION['fid']; //This is the forum id number
             
         ?>
-        <form action="create_board.php" method="post">
+        <form action="create_board.php" method="get">
             Title<br>  <input type="text" name="board_title" maxlength="50"><br>
             Description <br>
             <textarea name="board_desc" rows="10" cols="50" maxlength="500"></textarea> <br>

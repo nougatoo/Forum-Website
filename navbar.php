@@ -3,33 +3,12 @@
 
     $notification = "";
 
-    if(isset($_SESSION["reg_success"])){
-        if($_SESSION["reg_success"] === true){
-            $notification = "Registration Successful!";
-        }else{
-            $notification = "Registration Failed!";
-        }
-    }else{}
+    if(isset($_SESSION["notification"])){
+        $notification = $_SESSION["notification"];
+        unsset($_SESSION["notification"]);
+    }
 ?>
-<style type="text/css">
-    div.navbar ul {
-        list-style-type: none;
-        margin: 0 10px;
-        padding: 0;
-        overflow: hidden;
-    }
-
-    div.navbar li {
-        float: right;
-        padding: 2px;
-    }
-
-    div.navbar {
-        padding-bottom: 10px;
-        width: 100%;
-    }
-</style>
-
+<link rel="stylesheet" type="text/css" href="styles.css"/>
 
 <div class="navbar">
     <ul>

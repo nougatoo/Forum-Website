@@ -5,10 +5,10 @@
 <html>
     <body>
         <?php
-        $username = $_POST['user'];        
-        $bid = $_POST['bid'];
-        $date = $_POST['date'];
-        $title = $_POST['topic_title'];
+        $username = $_GET['user'];
+        $bid = $_GET['bid'];
+        $date = $_GET['date'];
+        $title = $_GET['topic_title'];
 
 
         $query = "INSERT INTO `topic` (title, noreply, datecreated, views, sticky, hidden, boardid, username) VALUES ('$title', '0', '$date', '0', '0', '0', '$bid', '$username')";
@@ -28,7 +28,7 @@
 
         <br>
         <br>
-        <form action="board.php" method="post">
+        <form action="board.php" method="get">
             <input type="hidden" value="<?php echo $bid ?>" name="goto_board">
             <input type="hidden" value="<?php echo $username ?>" name="user">
         <input type="submit" value="Go Back To Board">

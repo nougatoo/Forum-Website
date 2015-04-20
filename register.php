@@ -21,11 +21,11 @@
                 . "VALUES ('$username', 0, 0, 'My Bio')";
             $result2 = mysqli_query($db, $query2);
             if($result) {
-                $_SESSION["reg_success"] = true;
+                $_SESSION["notification"] = "Registration Successful!";
                 $_SESSION["username"] = $username;
                 header("Location: index.php");
             } else {
-                $_SESSION["reg_success"] = false;
+                $_SESSION["notification"] = "Registration Failed...";
                 header("Location: reg_screen.php");
             }
         }
