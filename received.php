@@ -32,7 +32,7 @@
             
                 Please enter the ID of the message you would like to reply to
                 <br>
-                <form action="send_screen.php" method="post">
+                <form action="send_screen.php" method="get">
                     <input type="text" name="reply_id">
                 <input type="submit" value="Reply">
                 <br>
@@ -66,22 +66,7 @@
                     $row_2 = $in_reply_to->fetch_assoc();
                     echo 'In reply to: "'.$row_2['content'].'"<br>';
                 }
-                
-                /**
-                 * Code that was trying to use to try and get the reply button
-                 * by every message
-                 */
-                /*
-                ?>
-        
 
-                    <form action="send_screen.php" method="post">
-                        <input type="hidden" value="<?php echo $row['id'] ?>" name="in_reply_to">
-                    <input type="submit" value="Reply">
-                
-        
-                <?php
-                */
                 echo "<br>";
                 echo "<hr>";
                 

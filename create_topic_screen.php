@@ -11,7 +11,7 @@
         
         <?php
         
-        $username = $_GET['user'];
+        $username = $_SESSION["username"];
         $bid = $_GET['bid'];
         $date = date("Y-m-d");
         
@@ -21,8 +21,7 @@
             Title: <input type="text" name="topic_title">
             <input type="hidden" value ="<?php echo $bid ?>" name="bid">
             <input type="hidden" value ="<?php echo $date ?>" name="date">     
-            <input type="hidden" value ="<?php echo $username ?>" name="user">
-                          
+
         <input type="submit" value="Create Topic">
         
     </body>

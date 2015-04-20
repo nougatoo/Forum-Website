@@ -12,10 +12,10 @@
         <br>
         
         <?php            
-            if(isset($_POST['reply_id']))
+            if(isset($_GET['reply_id']))
             {
                 
-                $reply_id = $_POST['reply_id'];
+                $reply_id = $_GET['reply_id'];
                 
                 //Showing the message that the user is replying to
                 $query = "SELECT content, id FROM privatemessage WHERE id='$reply_id'";
@@ -39,7 +39,7 @@
         ?>
 
         
-        <form action="send.php" method="post">
+        <form action="send.php" method="get">
             Subject: <input type="text" name="subject">
             <br>
             <textarea name="pm_content" rows="10" cols="50" maxlength="500"></textarea>
@@ -56,7 +56,7 @@
             {
         ?>
         
-            <form action="send.php" method="post">
+            <form action="send.php" method="get">
                 To:<input type="text" name="send_to">
                 <br>
                 Subject: <input type="text" name="subject">

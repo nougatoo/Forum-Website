@@ -23,7 +23,7 @@
 
     <body>
         <div>
-            <form action="welcome.php" method="post">
+            <form action="welcome.php" method="get">
                 <label>Please enter your username and password</label><br>
 
                 <label for="username">Username:</label>

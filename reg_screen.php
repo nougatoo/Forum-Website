@@ -24,7 +24,7 @@
 
     <body>
         <div id="reg_form">
-            <form action="register.php" method="POST">
+            <form action="register.php" method="post">
                 <label for="username_r">Username:</label>
                 <input type="text" name="username_r" required><br>
 

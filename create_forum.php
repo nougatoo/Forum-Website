@@ -2,7 +2,7 @@
     require_once 'navbar.php';
 
     $title = $_GET['title'];
-    $username = $_GET['user'];
+    $username = $_SESSION['username'];
     $description = $_GET['description'];
 
     //If the user filled in all three sections

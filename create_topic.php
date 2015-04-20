@@ -5,7 +5,7 @@
 <html>
     <body>
         <?php
-        $username = $_GET['user'];
+        $username = $_SESSION['username'];
         $bid = $_GET['bid'];
         $date = $_GET['date'];
         $title = $_GET['topic_title'];
@@ -30,7 +30,6 @@
         <br>
         <form action="board.php" method="get">
             <input type="hidden" value="<?php echo $bid ?>" name="goto_board">
-            <input type="hidden" value="<?php echo $username ?>" name="user">
         <input type="submit" value="Go Back To Board">
     </body>
 </html>

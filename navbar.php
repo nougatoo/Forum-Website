@@ -1,11 +1,15 @@
 <?php
     require_once("functions.php");
+    if(!isset($_SESSION["username"])){
+        $_SESSION["username"] = "Guest";
+        header("Location: index.php");
+    }
 
     $notification = "";
 
     if(isset($_SESSION["notification"])){
         $notification = $_SESSION["notification"];
-        unsset($_SESSION["notification"]);
+        unset($_SESSION["notification"]);
     }
 ?>
 <link rel="stylesheet" type="text/css" href="styles.css"/>
@@ -16,7 +20,7 @@
         <li style="float: left"><label><?php echo $notification?></label></li>
 
 <?php
-    if(!isset($_SESSION["username"]) || $_SESSION["username"] === "Guest"){
+    if($_SESSION["username"] === "Guest"){
 ?>
         <li><a href="login.php">Login</a></li>
         <li><a href="reg_screen.php">Register</a></li>

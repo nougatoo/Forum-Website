@@ -10,8 +10,8 @@
 
 //$_SESSION['topicid'] = $_POST['tid'];
 //$tid = $_SESSION['topicid'];
-$tid = $_POST['tid'];
-$user = $_POST['user'];
+$tid = $_GET['tid'];
+$user = $_SESSION['username'];
 
 //echo "Topic id: ".$_SESSION['topicid'];
 
@@ -47,9 +47,8 @@ $board_id = $resultBack->fetch_assoc();
 
 ?>
 
-<form action = "board.php" method = "post">
+<form action = "board.php" method = "get">
     <input type="hidden" value="<?php echo $board_id['boardid'] ?>" name="goto_board">
-    <input type="hidden" value="<?php echo $user ?>" name="user">
     <input type="submit" value="Go Back" />
 </form>
 
@@ -92,10 +91,9 @@ if($user != "Guest"){
 
         <br>
         <br>
-        <form action="post.php" method="post">
+        <form action="post.php" method="get">
             Post number you're replying to (leave blank if none): <input type="text" name="reply_to"><br>
             <input type="hidden" value="<?php echo $tid ?>" name="tid">
-            <input type="hidden" value="<?php echo $user ?>" name="user">
             <textarea name="post_content" rows="10" cols="50" maxlength="500"></textarea> <br>
         <input type="submit" value="Reply">
         

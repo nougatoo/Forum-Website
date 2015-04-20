@@ -1,8 +1,8 @@
 <?php
     require_once 'functions.php';
     //Storing what the user input
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = $_GET['username'];
+    $password = $_GET['password'];
 
     $query = "SELECT * FROM user WHERE username='$username' and password='$password'";
     $result = mysqli_query($db, $query) or die(mysqli_error);
@@ -14,8 +14,8 @@
     if ($count == 1){
         $_SESSION['username'] = $username;
         header("Location: index.php");
-    } else {
-        print("The information you entered was incorrect.");
-        //Maybe have two buttons here that give user option to go back and register or continue as guest
+    }else {
+        $_SESSION["notification"] = "Unable to login using those credentials";
+        header("Location: index.php");
     }
 ?>

@@ -9,10 +9,10 @@
     <body>
         <?php            
             //Buncha stuff we need
-            $reply_id = $_POST['reply_to'];
-            $post_content = $_POST['post_content'];
-            $tid = $_POST['tid'];
-            $user = $_POST['user'];
+            $reply_id = $_GET['reply_to'];
+            $post_content = $_GET['post_content'];
+            $tid = $_GET['tid'];
+            $user = $_SESSION['username'];
             $date = date("Y-m-d");
             
             //Testing code, can be taken out after
@@ -49,9 +49,8 @@
         ?>
         
         
-        <form action="topic.php" method="post">
+        <form action="topic.php" method="get">
             <input type="hidden" value="<?php echo $tid ?>" name="tid">
-            <input type="hidden" value="<?php echo $user ?>" name="user">
         <input type="submit" value="Click Here To See Your Post">
     </body>
 </html>

@@ -23,7 +23,6 @@
 ?>
 
         <form action = "create_forum_screen.php" method = "get">
-            <input type="hidden" value="<?php print($user)?>" name="user">
             <input type="submit" value="Create Forum" />
         </form>
 
@@ -46,7 +45,7 @@
 ?>
             <br>
             <span>
-                <h2 style="display: inline"><?php print($row["title"])?>:</h2>
+                <h2><?php print($row["title"])?>:</h2>
 
 <?php
             if ($create_board == true){
@@ -69,8 +68,7 @@
                 $bid = $row2["id"];
 ?>
                 <form action = "board.php" method = "get">
-                    <h3 style="display: inline"><?php echo $row2["title"] . ": "?></h3><?php echo $row2["description"]?>
-                    <input type="hidden" value="<?php echo $user?>" name="user">
+                    <h3><?php echo $row2["title"] . ": "?></h3><?php echo $row2["description"]?>
                     <button type="submit" name="boardid" value="<?php echo $bid?>">Go Here</button>
                 </form>
 <?php

@@ -8,7 +8,7 @@
 <?php
     if(isset($_GET["boardid"])){
         $_SESSION['bid'] = $_GET['boardid'];
-        $username = $_GET['user'];
+        $username = $_SESSION['user'];
         $bid = $_SESSION['bid'];
 
         //If an admins stickied something
@@ -19,7 +19,7 @@
                 $result = mysqli_query($db, $query);
                 unsset($_GET['sticky']);
             }else if($_GET['sticky'] == 2){
-                $tid_s = $_POST['tid'];
+                $tid_s = $_GET['tid'];
                 $query = "UPDATE `topic` SET sticky=0 WHERE id='$tid_s'";
                 $result = mysqli_query($db, $query);
                 unsset($_GET['sticky']);
@@ -47,7 +47,6 @@ while ($row = $result->fetch_assoc()){
     <br>
     <form action = "create_topic_screen.php" method = "get">
         <input type="hidden" value="<?php echo $bid ?>" name ="bid">
-        <input type="hidden" value="<?php echo $username ?>" name="user">
         <input type="submit" value="Create Topic" />
     </form>
 
@@ -75,9 +74,8 @@ while ($row = $result->fetch_assoc()){
             echo "Created by: ".($row['username'])."<br>";
 ?>
 
-            <form action = "topic.php" method = "post">
+            <form action = "topic.php" method = "get">
                 <input type="hidden" value="<?php echo $row['id']?>" name="tid">
-                <input type="hidden" value="<?php echo $username ?>" name="user">
                 <input type="submit" value="See Topic" />
             </form>
 
@@ -91,10 +89,9 @@ while ($row = $result->fetch_assoc()){
             if($row2['rank'] == 0)
             {
 ?>
-                <form action = "board.php" method = "post">
+                <form action = "board.php" method = "get">
                     <input type="hidden" value="<?php echo $row['id']?>" name="tid">
                     <input type="hidden" value="<?php echo $bid ?>" name="goto_board">
-                    <input type="hidden" value="<?php echo $username ?>" name="user">
                     <input type="hidden" value="<?php echo "2" ?>" name="sticky">
                     <input type="submit" value="Unsticky" />
                 </form>
@@ -125,7 +122,6 @@ while ($row = $result->fetch_assoc()){
 
             <form action = "topic.php" method = "get">
                 <input type="hidden" value="<?php echo $row['id']?>" name="tid">
-                <input type="hidden" value="<?php echo $username ?>" name="user">
                 <input type="submit" value="See Topic" />
             </form>
 
@@ -139,7 +135,6 @@ while ($row = $result->fetch_assoc()){
                 <form action="board.php" method="get">
                     <input type="hidden" value="<?php echo $row['id']?>" name="tid">
                     <input type="hidden" value="<?php echo $bid ?>" name="goto_board">
-                    <input type="hidden" value="<?php echo $username ?>" name="user">
                     <input type="hidden" value="<?php echo "1" ?>" name="sticky">
                     <input type="submit" value="Sticky"/>
                 </form>
