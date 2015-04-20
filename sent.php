@@ -3,6 +3,9 @@
 ?>
 
 <html>
+    <head>
+        <title>Sent Messages</title>
+    </head>
     <body>
         <?php            
             $username = $_SESSION['username'];

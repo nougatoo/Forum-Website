@@ -8,59 +8,30 @@
 ?>
 
 <html>
-    <style>
-        body{
-        }
-
-    </style>
-
+    <head>
+        <title>Collier Forum</title>
+    </head>
     <body>
-        <p>==========ROBERT COLLIER FAN FORUM==========</p>
-
 <?php
-    if (isset($_SESSION['username']))
-    {
+    if (isset($_SESSION['username'])){
         $user = $_SESSION['username'];
         $query = "SELECT create_forum, create_board FROM rank JOIN user ON user.rank=rank.id WHERE username='$user'";
         $perm_result = mysqli_query($db, $query);
-        if ($perm_result->num_rows>0)
-        {
+        if ($perm_result->num_rows>0){
             $value = $perm_result->fetch_assoc();
             if ($value['create_forum']==1){
-                echo 'I am an Administrator! I have Rights to Create Forums!!<br>';
-
-
-
-                /*
-                 * TODO: Display "Add Forum" Function.
-                 * Also display the Forum with the corresponding Boards underneath
-                 * We also need to implement the "Add Board" Function underneath every forum.
-                 * Possibly assign the Forum ID to be associated with the Add Board link?
-                 * Display a Forum Based of how many Board is Visible
-                 * If a Forum have at LEAST ONE VISIBLE BOARD for a user, then the Forum should be displayed
-                 * with the visible boards.
-                 * If a Forum does NOT have ANY VISIBLE BOARD for a user, then the Forum should NOT be displayed
-                 * Extra: Delete Forum
-                 */
-
 ?>
 
-                <form action = "create_forum_screen.php" method = "post">
-                    <input type="hidden" value="<?php echo $user?>" name="user">
-                    <input type="submit" value="Create Forum" />
-                </form>
+        <form action = "create_forum_screen.php" method = "post">
+            <input type="hidden" value="<?php print($user)?>" name="user">
+            <input type="submit" value="Create Forum" />
+        </form>
 
 <?php
             }
 
-            if ($value['create_board']==1){
-                echo 'I have permission to create boards!<br>';
-                $create_board = true;
-            }
-        } else {
-            echo "Fantastic, you aren't an Admin nub, no buttons for you";
+            $create_board = $value['create_board'] == 1;
         }
-        echo "<br>$create_board";
         /*
         * TODO: Display Forums for Regular Users
         * We may not even need this else statement, because Admins should be able to see the rest of the Forums too.
@@ -96,42 +67,40 @@
 
         //Shows all the forums and the boards that go with
         while($row = $result->fetch_assoc()){
-            echo "<br>"."<br>";
-?>
-
-                        <span style="font-size: medium; "><b>
-
-<?php
-            echo $row["title"]. ": ";
             $fid = $row["id"];
 ?>
-
-                        </span><br>
+            <br>
+            <span>
+                <h2 style="display: inline"><?php print($row["title"])?>:</h2>
 
 <?php
             if ($create_board == true){
-                echo '<form action = "create_board_screen.php" method = "post">
-                                    <button type="submit" name="add_board" value="'.$fid.'"> Add Board</button>
-                                </form>';
-            }
 ?>
-
+                <form action = "create_board_screen.php" method = "post">
+                    <button type="submit" name="add_board" value="'.$fid.'"> Add Board</button>
+                </form>
+            </span>
 <?php
+            }
+
             $fid = $row["id"];
 
             $query2 = "SELECT title, description,id FROM board WHERE forumid=$fid";
             $result2 = mysqli_query($db, $query2);
 
             while($row2 = $result2->fetch_assoc()){
-
-                echo "<br>".$row2["title"].": ";
-                echo $row2["description"]. " ";
                 $bid = $row2["id"];
+
+                //echo "<br>".$row2["title"].": ";
+                //echo $row2["description"]. " ";
                 
-                echo '<form action = "board.php" method = "post">
-                         <input type="hidden" value="'.$user.'" name="user">
-                    <button type="submit" name="goto_board" value="'.$bid.'"> Go Here</button>
-                </form>';
+?>
+                <form action = "board.php" method = "post">
+                    <h3 style="display: inline"><?php echo $row2["title"] . ": "?></h3><?php echo $row2["description"]?>
+                    <input type="hidden" value="<?php echo $user?>" name="user">
+                    <button type="submit" name="goto_board" value="<?php echo $bid?>">Go Here</button>
+                </form>
+<?php
             }
         }
     }

@@ -3,6 +3,9 @@
 ?>
 
 <html>
+    <head>
+        <title>Register</title>
+    </head>
     <style type="text/css">
         #reg_form {
             text-align: center;

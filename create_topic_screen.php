@@ -2,7 +2,10 @@
     require_once 'navbar.php';
 ?>
 
-<html>  
+<html>
+    <head>
+        <title>Create Topic</title>
+    </head>
     <body>
         
         

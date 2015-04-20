@@ -3,6 +3,9 @@
 ?>
 
 <html>
+    <head>
+        <title>Login</title>
+    </head>
     <style type="text/css">
         div {
             text-align: center;

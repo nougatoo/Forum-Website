@@ -3,6 +3,9 @@
 ?>
 
 <html>
+    <head>
+        <title>Send Message</title>
+    </head>
     <body>
         <a href="inbox.php">Go Back to Inbox</a>
         <br>

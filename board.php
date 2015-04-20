@@ -1,7 +1,9 @@
 <?php
     require_once 'navbar.php';
 ?>
-
+    <head>
+        <title>Board</title>
+    </head>
     <body>
 <?php
 $_SESSION['bid'] = $_POST['goto_board'];

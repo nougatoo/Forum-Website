@@ -5,7 +5,9 @@
     echo "Logged in as: ".$username;
 
 ?>
-
+<head>
+    <title>Create Forum</title>
+</head>
     <br>    
     <form action = "create_forum.php" method = "post">
         Title: <input type="text" name="title"><br>

@@ -3,6 +3,9 @@
 ?>
 
 <html>
+    <head>
+        <title>Inbox</title>
+    </head>
     <body>
         
         <a href="profile_page.php">Go Back to Profile Page</a>

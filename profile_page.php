@@ -2,6 +2,9 @@
 require_once 'navbar.php';
 ?>
 <html>
+<head>
+    <title>Profile Page</title>
+</head>
 <!-- can't figure out how to make it behave like a textarea-->
 <style type="text/css">
     #bio {

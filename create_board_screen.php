@@ -2,6 +2,9 @@
     require_once 'navbar.php';
 ?>      
 <html>
+    <head>
+        <title>Create Board</title>
+    </head>
     <body>
         <?php
 

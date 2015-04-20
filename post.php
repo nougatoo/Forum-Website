@@ -3,6 +3,9 @@
 ?>
 
 <html>
+    <head>
+        <title>Create Post</title>
+    </head>
     <body>
         <?php            
             //Buncha stuff we need
