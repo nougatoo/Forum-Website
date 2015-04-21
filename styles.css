@@ -1,7 +1,8 @@
 body{
     background-image: url("robcollier2faded.png"), url("background.png");
-    background-position: center bottom, left top;
-    background-repeat: repeat, repeat;
+    background-position: left bottom, left top;
+    background-repeat: no-repeat, repeat;
+    background-attachment: fixed;
 }
 
 div.profile {
