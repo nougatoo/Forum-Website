@@ -1,5 +1,7 @@
 body{
-    background-image: url("background.png");
+    background-image: url("robcollier2faded.png"), url("background.png");
+    background-position: center bottom, left top;
+    background-repeat: repeat, repeat;
 }
 
 #bio {
