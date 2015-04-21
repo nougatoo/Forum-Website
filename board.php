@@ -17,12 +17,12 @@
                 $tid_s = $_GET['tid'];
                 $query = "UPDATE `topic` SET sticky=1 WHERE id='$tid_s'";
                 $result = mysqli_query($db, $query);
-                unsset($_GET['sticky']);
-            }else if($_GET['sticky'] == 2){
+                unset($_GET['sticky']);
+            }else if($_GET['sticky'] == 0){
                 $tid_s = $_GET['tid'];
                 $query = "UPDATE `topic` SET sticky=0 WHERE id='$tid_s'";
                 $result = mysqli_query($db, $query);
-                unsset($_GET['sticky']);
+                unset($_GET['sticky']);
             }
         }
     }else{
@@ -40,7 +40,6 @@
     }
 
     if ($_SESSION['username'] != "Guest"){
-
 ?>
     <br>
     <br>
@@ -51,6 +50,11 @@
 
 <?php
     }
+
+    $query2 = "SELECT rank FROM user WHERE username='$username'";
+    $result2 = mysqli_query($db, $query2);
+    $row2 = $result2->fetch_assoc();
+
     //Going to get all the topics that belong to this board
     $query = "SELECT id, title, noreply, datecreated, views, sticky, hidden, boardid, username FROM topic WHERE boardid=$bid";
     $result = mysqli_query($db, $query);
@@ -93,6 +97,20 @@
                 <td><?php echo $author?></td>
                 <td><?php echo $date?></td>
                 <td><?php echo $replies?></td>
+<?php
+                if($row2["rank"] == 0){
+?>
+                <td>
+                    <form action="board.php" method="get">
+                        <input type="hidden" value="<?php echo $row['id']?>" name="tid">
+                        <input type="hidden" value="<?php echo $bid ?>" name="boardid">
+                        <input type="hidden" value="<?php echo "0" ?>" name="sticky">
+                        <input type="submit" value="UnSticky"/>
+                    </form>
+                </td>
+<?php
+                }
+?>
             </tr>
 
 <?php
@@ -119,6 +137,20 @@
                 <td><?php echo $author?></td>
                 <td><?php echo $date?></td>
                 <td><?php echo $replies?></td>
+<?php
+                if($row2["rank"] == 0){
+?>
+                    <td>
+                        <form action="board.php" method="get">
+                            <input type="hidden" value="<?php echo $row['id']?>" name="tid">
+                            <input type="hidden" value="<?php echo $bid ?>" name="boardid">
+                            <input type="hidden" value="<?php echo "1" ?>" name="sticky">
+                            <input type="submit" value="Sticky"/>
+                        </form>
+                    </td>
+<?php
+                }
+?>
             </tr>
 
 <?php
