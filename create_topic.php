@@ -29,7 +29,7 @@
         <br>
         <br>
         <form action="board.php" method="get">
-            <input type="hidden" value="<?php echo $bid ?>" name="goto_board">
+            <input type="hidden" value="<?php echo $bid ?>" name="boardid">
         <input type="submit" value="Go Back To Board">
     </body>
 </html>

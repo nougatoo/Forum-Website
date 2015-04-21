@@ -87,9 +87,8 @@
                 <input name="editbio" type="submit" value="Save">
             </form> <br>
 <?php
-            $biocontent = $_GET['biography'];
-
             if(isset($_GET["biography"])){
+                $biocontent = $_GET['biography'];
                 $query4 = "UPDATE `profile_page` SET biography='$biocontent' WHERE user='$username'";
                 $result4 = mysqli_query($db, $query4);
             }

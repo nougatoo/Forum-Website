@@ -48,7 +48,7 @@ $board_id = $resultBack->fetch_assoc();
 ?>
 
 <form action = "board.php" method = "get">
-    <input type="hidden" value="<?php echo $board_id['boardid'] ?>" name="goto_board">
+    <input type="hidden" value="<?php echo $board_id['boardid'] ?>" name="boardid">
     <input type="submit" value="Go Back" />
 </form>
 
