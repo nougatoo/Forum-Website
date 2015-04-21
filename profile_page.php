@@ -12,6 +12,7 @@
         <title>Profile Page</title>
     </head>
     <body>
+        <div class="profile">
 <?php
 
     /**
@@ -64,34 +65,61 @@
                 break;
         }
         if(!$isGuestBannedFlag) {
-            print($username . "'s Profile Page");
-            // Assuming 1 is online and 0 is offline
-            if($status){
 ?>
-                <br> Status: <span style="color: green">Online</span>
-<?php
-            } else {
-?>
-                <br> Status: <span style="color: red;">Offline</span>
-<?php
-            }
-            echo "<br><a href='inbox.php'>Inbox</a>";
-?>
-            <br> Rank: <span style="color: <?php echo $rankColour?>; "><?php echo $rankMsg?></span>
-            <br> Title: <?php echo $row['title']?>
-            <br> Signature: <?php echo $row['signature']?>
-            <br> Email: <?php echo $row['email']?>
-            <br> Gender: <?php echo $row['gender']?>
-            <br> Date Joined: <?php echo $row['datejoined']?>
-            <br> Number of Posts: <?php echo $row2['count(id)']?>
-            <form action="profile_page.php" method="post">
-                Biography: <br>
-                <input type="text" name="biography" id="bio" maxlength="10000" placeholder="My Bio" value="<?php echo $row3['biography']?>"> <br>
-                <input name="editbio" type="submit" value="Save">
-            </form> <br>
+            <table cellpadding="2" cellspacing="2" align="center">
+                <tr>
+                    <th colspan="2"><h2><?php echo $username?>'s Profile Page</h2></th>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    <td><span style="color: <?php echo $status ? 'green' : 'red'?>"><?php echo $status ? 'Online' : 'Offline'?></span></td>
+                </tr>
+                <tr>
+                    <td>Inbox:</td>
+                    <td><a href='inbox.php'>Go To Inbox</a></td>
+                </tr>
+                <tr>
+                    <td>Rank:</td>
+                    <td><span style="color: <?php echo $rankColour?>; "><?php echo $rankMsg?></span></td>
+                </tr>
+                <tr>
+                    <td>Title:</td>
+                    <td><?php echo $row['title']?></td>
+                </tr>
+                <tr>
+                    <td>Signature:</td>
+                    <td><?php echo $row['signature']?></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><?php echo $row['email']?></td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td><?php echo $row['gender']?></td>
+                </tr>
+                <tr>
+                    <td>Date Joined:</td>
+                    <td><?php echo $row['datejoined']?></td>
+                </tr>
+                <tr>
+                    <td>Posts:</td>
+                    <td><?php echo $row2['count(id)']?></td>
+                </tr>
+                <tr>
+                    <td colspan="20">
+                        <form action="profile_page.php" method="post">
+                            Biography: <br>
+                            <textarea maxlength="10000" name="biography" rows="10" cols="40"><?php echo $row3['biography']?></textarea>
+                            <input name="editbio" type="submit" value="Save">
+                        </form>
+                    </td>
+                </tr>
+            </table>
 <?php
         }
     }
 ?>
+        </div>
     </body>
 </html>

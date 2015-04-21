@@ -4,13 +4,8 @@ body{
     background-repeat: repeat, repeat;
 }
 
-#bio {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    width: 25%;
-    height: 15%;
-    word-wrap: break-word;
+div.profile {
+    width: 100%;
 }
 
 th {
