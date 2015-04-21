@@ -8,7 +8,7 @@
 <?php
     if(isset($_GET["boardid"])){
         $_SESSION['bid'] = $_GET['boardid'];
-        $username = $_SESSION['user'];
+        $username = $_SESSION['username'];
         $bid = $_SESSION['bid'];
 
         //If an admins stickied something
