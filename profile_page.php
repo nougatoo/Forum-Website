@@ -1,12 +1,17 @@
 <?php
-    require_once 'navbar.php';
+    require_once "navbar.php";
+    $username = $_SESSION['username'];
+
+    if(isset($_POST["biography"])){
+        $query4 = "UPDATE `profile_page` SET biography='{$_POST['biography']}' WHERE user='$username';";
+        $result4 = mysqli_query($db, $query4);
+    }
 ?>
 <html>
     <head>
         <title>Profile Page</title>
     </head>
     <body>
-
 <?php
 
     /**
@@ -14,7 +19,6 @@
      * so that we don't show anything for guests
      */
     $isGuestBannedFlag = False;
-    $username = $_SESSION['username'];
 
     $query = "SELECT * FROM user WHERE username = '$username'";
     $result = mysqli_query($db, $query);
@@ -30,10 +34,10 @@
         $result2 = mysqli_query($db, $query2);
         $row2 = $result2->fetch_assoc();
     //Query to get the biography and status of the user
-        $query3 = "SELECT status,biography FROM profile_page WHERE user = '$username'";
+        $query3 = "SELECT `status`,`biography` FROM profile_page WHERE user = '$username'";
         $result3 = mysqli_query($db, $query3);
         $row3 = $result3->fetch_assoc();
-        $status = $row3['status'];
+        $status = $row3['status'] == 1;
 
         switch ($rank) {
             case 0:
@@ -82,16 +86,10 @@
             <br> Number of Posts: <?php echo $row2['count(id)']?>
             <form action="profile_page.php" method="post">
                 Biography: <br>
-                <!-- Perhaps use some CSS to get it to look like a text area? -->
                 <input type="text" name="biography" id="bio" maxlength="10000" placeholder="My Bio" value="<?php echo $row3['biography']?>"> <br>
                 <input name="editbio" type="submit" value="Save">
             </form> <br>
 <?php
-            if(isset($_GET["biography"])){
-                $biocontent = $_GET['biography'];
-                $query4 = "UPDATE `profile_page` SET biography='$biocontent' WHERE user='$username'";
-                $result4 = mysqli_query($db, $query4);
-            }
         }
     }
 ?>
