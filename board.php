@@ -58,9 +58,9 @@
     $regular = array();
 
     while($row = $result->fetch_assoc()){
-        if($row["stickied"] == 1 && $row["hidden"] == 0){
+        if($row["sticky"] == 1 && $row["hidden"] == 0){
             array_push($stickied, $row);
-        }else if($row["stickied"] == 0){
+        }else if($row["sticky"] == 0){
             array_push($regular, $row);
         }
     }
