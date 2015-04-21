@@ -89,7 +89,7 @@
 ?>
 
             <tr>
-                <td><?php echo $title?></td>
+                <td><a href="topic.php?tid=<?php echo $id?>"><?php echo $title?></a></td>
                 <td><?php echo $author?></td>
                 <td><?php echo $date?></td>
                 <td><?php echo $replies?></td>
@@ -115,7 +115,7 @@
 ?>
 
             <tr>
-                <td><?php echo $title?></td>
+                <td><a href="topic.php?tid=<?php echo $id?>"><?php echo $title?></a></td>
                 <td><?php echo $author?></td>
                 <td><?php echo $date?></td>
                 <td><?php echo $replies?></td>
